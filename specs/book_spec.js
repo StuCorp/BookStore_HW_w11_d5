@@ -28,4 +28,8 @@ it('should have a price', function(){
   assert.strictEqual(book.price, 5.99);
 });
 
+it('should be able to print out its properties as a string', function(){
+  assert.strictEqual(book.printProperties(), "Title: Immortality, Author: Milan Kundera, Genre: Philosophy, Price: £5.99");
+});
+
 });
