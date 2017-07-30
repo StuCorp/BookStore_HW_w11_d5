@@ -1,14 +1,63 @@
-var assert = require('assert');
-var BookShop = require('../bookshop.js');
-var Book = require('../book.js');
-var Customer = require('../customer.js');
+var _ = require('lodash');
 
-describe('Customer', function(){
+var Customer = function(money){
+  this.money = money; 
+  this.books = [];
+};
 
-var book;
-var book2;
-var book3;
-var book4;
-var bookShop;
+Customer.prototype = {
+  buy: function(book){
+    if(book.price < this.money){
+      this.books.push(book);
+      this.money -= book.price;
+    }
+  },
 
-beforeEach(function(){
+  sell: function(book){
+    this.money += book.price;
+    return this.books.splice(this.books.indexOf(book),1);
+  },
+
+  totalValue: function(books){
+    if(!books){
+      return _.sumBy(this.books, function(book){
+        return book.price;
+      })
+    } else {
+      return _.sumBy(books, function(book){
+        return book.price;
+      })
+    }
+  },
+
+  totalValueBy: function(criterion){
+    return this.totalValue(_.filter(this.books, function(book){
+      return book.genre === criterion; 
+    }));
+  },
+
+  findLongest: function(){
+    return _.maxBy(this.books, function(book){
+      return book.length; 
+    });
+  }, 
+
+  sortByValue: function(direction){
+
+    this.books = _.sortBy(this.books, "price");
+    if(direction==="descending"){
+      this.books.reverse();
+    }
+  }, 
+
+  compareCollection: function(customer){
+    return _.round(this.totalValue() - customer.totalValue(), 2); 
+  }
+
+
+
+
+}
+
+module.exports = Customer;
+

@@ -9,7 +9,7 @@ var book;
 
 beforeEach(function(){
 
-  book = new Book("Milan Kundera", "Immortality", "Philosophy", 5.99);
+  book = new Book("Milan Kundera", "Immortality", "Philosophy", 5.99, 358);
 })
 
 it('Should be have an author', function(){
@@ -30,6 +30,10 @@ it('should have a price', function(){
 
 it('should be able to print out its properties as a string', function(){
   assert.strictEqual(book.printProperties(), "Title: Immortality, Author: Milan Kundera, Genre: Philosophy, Price: £5.99");
+});
+
+it('should have a length in pages', function(){
+  assert.strictEqual(book.length, 358);
 });
 
 });

@@ -13,10 +13,10 @@ var bookShop;
 
 beforeEach(function(){
 
-  book = new Book("Milan Kundera", "Immortality", "Philosophy", 5.99);
-  book2 = new Book("R L Stine", "Monster Blood", "Children's Horror", 24.99);
-  book3 = new Book("Vinne Jones", "It's Been Emotional", "Biography", 1.99);
-  book4 = new Book("Lil Kim", "The Price of Loyalty", "Biography", 3.49);
+  book = new Book("Milan Kundera", "Immortality", "Philosophy", 5.99, 358);
+  book2 = new Book("R L Stine", "Monster Blood", "Children's Horror", 24.99, 140);
+  book3 = new Book("Vinne Jones", "It's Been Emotional", "Biography", 1.99, 507);
+  book4 = new Book("Lil Kim", "The Price of Loyalty", "Biography", 3.49, 245);
 
   bookShop = new BookShop("Big Al's Record Store", "Prague", 500); 
 
@@ -59,7 +59,7 @@ it('it should be able to display all books by genre', function(){
   bookShop.add(book4);
   assert.deepEqual(bookShop.findByCriterion("Biography"), ["Title: It's Been Emotional, Author: Vinne Jones, Genre: Biography, Price: £1.99", "Title: The Price of Loyalty, Author: Lil Kim, Genre: Biography, Price: £3.49"]);
 
-  
+
 
 });
 
