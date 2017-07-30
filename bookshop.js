@@ -25,7 +25,6 @@ BookShop.prototype = {
 
   sell: function(book){
     this.balance += book.price; 
-    // var index = this.inventory.indexOf(book);
     return this.inventory.splice(this.inventory.indexOf(book),1);
   },
 
